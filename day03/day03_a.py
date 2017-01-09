@@ -25,11 +25,36 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ********************************************************************************
 """
 
+import re
+
+
 def main():
     """the main function"""
-    pass
+    iterations_counter = 0
+    counter = 0
+    digitsRegex = re.compile(r"\d+")
+
+    with open("input.txt", "r") as infile:
+        for line in infile.readlines():
+            if len(digitsRegex.findall(line)) > 0:
+                a = int(digitsRegex.findall(line)[0])
+                b = int(digitsRegex.findall(line)[1])
+                c = int(digitsRegex.findall(line)[2])
+
+                if is_triangle(a, b, c):
+                    counter += 1
+                iterations_counter += 1
+
+    print(counter)
+
+
+def is_triangle(a, b, c):
+    """checks if the three argument integers can form a triangle"""
+    if (a + b) > c and (a + c) > b and (c + b) > a:
+        return True
+    else:
+        return False
 
 
 if __name__ == "__main__":
     main()
-
