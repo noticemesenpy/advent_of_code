@@ -32,6 +32,9 @@ def main():
     """the main function"""
     counter = 0
     digitsRegex = re.compile(r"\d+")
+    a_list = []
+    b_list = []
+    c_list = []
 
     with open("input.txt", "r") as infile:
         for line in infile.readlines():
@@ -39,9 +42,14 @@ def main():
                 a = int(digitsRegex.findall(line)[0])
                 b = int(digitsRegex.findall(line)[1])
                 c = int(digitsRegex.findall(line)[2])
+                a_list.append(a)
+                b_list.append(b)
+                c_list.append(c)
+        joined_list = a_list + b_list + c_list
 
-                if is_triangle(a, b, c):
-                    counter += 1
+    for i in range(0, len(joined_list), 3):
+        if is_triangle(joined_list[i], joined_list[i + 1], joined_list[i + 2]):
+            counter += 1
 
     print(counter)
 
