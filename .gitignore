@@ -90,3 +90,5 @@ ENV/
 
 # Rope project settings
 .ropeproject
+real_rooms.txt
+deciphered_rooms.txt
